@@ -2,6 +2,8 @@
 
 (message "Setting up tger Emacs...")
 
+(server-start)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
@@ -37,7 +39,6 @@
 
 (global-set-key "\C-b" 'Control-X-prefix)
 
-;; (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key (kbd "M-<delete>") 'kill-word)
 
 ;;;; Mode hooks go here
@@ -45,8 +46,7 @@
 	  (lambda ()
 	    (paredit-mode +1)
 	    (eldoc-mode +1)
-	    (auto-fill-mode +1)
-	    (local-set-key '[C-tab] 'lisp-complete-symbol)))
+	    (auto-fill-mode +1)))
 
 ;;;; Modes that I want enabled by default goes here
 
@@ -72,10 +72,9 @@
 
 (setenv "PAGER" "/bin/cat")
 (setenv "EDITOR" "emacsclient")
-(server-start)
 
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq skeleton-pair t)
+;; (setq skeleton-pair t)
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
